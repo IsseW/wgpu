@@ -70,6 +70,15 @@ impl Span {
 
     /// Return a [`SourceLocation`] for this span in the provided source.
     pub fn location(&self, source: &str) -> SourceLocation {
+        if source.is_empty() {
+            return SourceLocation {
+                line_number: 0,
+                line_position: 0,
+                offset: 0,
+                length: 0,
+            }
+        }
+
         let prefix = &source[..self.start as usize];
         let line_number = prefix.matches('\n').count() as u32 + 1;
         let line_start = prefix.rfind('\n').map(|pos| pos + 1).unwrap_or(0);
