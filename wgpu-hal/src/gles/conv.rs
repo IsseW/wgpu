@@ -508,7 +508,7 @@ pub(super) fn is_opaque_type(glsl_uniform_type: u32) -> bool {
 
 pub(super) fn uniform_byte_size(glsl_uniform_type: u32) -> u32 {
     match glsl_uniform_type {
-        glow::FLOAT | glow::INT => 4,
+        glow::FLOAT | glow::INT | glow::UNSIGNED_INT => 4,
         glow::FLOAT_VEC2 | glow::INT_VEC2 => 8,
         glow::FLOAT_VEC3 | glow::INT_VEC3 => 12,
         glow::FLOAT_VEC4 | glow::INT_VEC4 => 16,

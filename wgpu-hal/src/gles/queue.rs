@@ -1443,9 +1443,9 @@ impl super::Queue {
                         let data = get_data::<[i32; 4]>(data_bytes, offset)[0];
                         unsafe { gl.uniform_4_i32_slice(location, &data) };
                     }
-                    glow::FLOAT_MAT2 => {
-                        let data = get_data::<[f32; 4]>(data_bytes, offset)[0];
-                        unsafe { gl.uniform_matrix_2_f32_slice(location, false, &data) };
+                    glow::UNSIGNED_INT => {
+                        let data = get_data::<u32>(data_bytes, offset)[0];
+                        unsafe { gl.uniform_1_u32(location, data) };
                     }
                     glow::FLOAT_MAT3 => {
                         let data = get_data::<[f32; 9]>(data_bytes, offset)[0];
