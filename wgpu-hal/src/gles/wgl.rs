@@ -568,6 +568,12 @@ impl Surface {
             return Err(crate::SurfaceError::Other("unable to swap buffers"));
         }
 
+        if let Err(e) = inner.context.unmake_current() {
+            log::error!("unable to unset the current WGL context: {e}",);
+            return Err(crate::SurfaceError::Other(
+                "unable to unset the current WGL context",
+            ));
+        }
         Ok(())
     }
 
@@ -680,6 +686,13 @@ impl crate::Surface<super::Api> for Surface {
             format_desc,
             sample_type: wgt::TextureSampleType::Float { filterable: false },
         });
+
+        if let Err(e) = inner.context.unmake_current() {
+            log::error!("unable to unset the OpenGL context current: {e}",);
+            return Err(crate::SurfaceError::Other(
+                "unable to make the OpenGL context current for surface",
+            ));
+        }
 
         Ok(())
     }
