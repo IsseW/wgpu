@@ -7493,6 +7493,12 @@ template <typename A>
                 )?;
             }
 
+            // A conservative depth test has no attribute here, the depth output stays
+            // `depth(any)` and the test runs as without it.
+            if ep.early_depth_test == Some(crate::EarlyDepthTest::Force) {
+                write!(self.out, "[[early_fragment_tests]] ")?;
+            }
+
             // Write the entry point function's name, and begin its argument list.
             if let Some(em_str) = em_str {
                 write!(self.out, "{em_str} ")?;

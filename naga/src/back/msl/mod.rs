@@ -843,7 +843,7 @@ pub fn supported_capabilities() -> crate::valid::Capabilities {
         // No CULL_DISTANCE
         | Caps::STORAGE_TEXTURE_16BIT_NORM_FORMATS
         | Caps::MULTIVIEW
-        // No EARLY_DEPTH_TEST
+        | Caps::EARLY_DEPTH_TEST
         | Caps::MULTISAMPLED_SHADING
         | Caps::RAY_QUERY
         | Caps::DUAL_SOURCE_BLENDING

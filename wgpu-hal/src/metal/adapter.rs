@@ -1184,6 +1184,7 @@ impl super::CapabilitiesQuery {
 
         let mut features = F::empty()
             | F::MAPPABLE_PRIMARY_BUFFERS
+            | F::SHADER_EARLY_DEPTH_TEST
             | F::VERTEX_WRITABLE_STORAGE
             | F::TEXTURE_ADAPTER_SPECIFIC_FORMAT_FEATURES
             | F::IMMEDIATES

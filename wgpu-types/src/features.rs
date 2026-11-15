@@ -1107,6 +1107,7 @@ bitflags_array! {
         /// Supported platforms:
         /// - Vulkan
         /// - GLES 3.1+
+        /// - Metal, where a conservative depth specifier gives no early test
         ///
         /// This is a native only feature.
         ///
