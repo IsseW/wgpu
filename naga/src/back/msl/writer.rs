@@ -2997,7 +2997,12 @@ impl<W: Write> Writer<W> {
                             _ => put_numeric_type(&mut self.out, target_scalar, &[])?,
                         };
                         write!(self.out, ">(")?;
-                        self.put_expression(expr, context, true)?;
+                        self.put_wrapped_expression_for_packed_vec3_access(
+                            expr,
+                            context,
+                            true,
+                            &Self::put_expression,
+                        )?;
                         write!(self.out, ")")?;
                     }
                 }
